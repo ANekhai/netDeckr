@@ -1,0 +1,4 @@
+include netdeckinator/schema.sql
+graft netdeckinator/static
+graft netdeckinator/templates
+global-exclude *.pyc
