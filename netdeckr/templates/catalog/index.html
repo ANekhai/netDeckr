@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <form method="post" action="{{ url_for('catalog.add') }}">
+        <label for="name">Card Name</label>
+        <input name="name" id="name" value="{{ request.form['name'] }}" required>
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" value="{{ request.form['quantity'] or 1}}">
+        <input type="submit" value="Add">
+    </form>
+{% endblock %}
+
+{% block content %}
+    {% for card in cards %}
+        <article class="entry">
+            <header>
+                <div>
+                    <h1>{{ card['name'] }}</h1>
+                    <div class="quantity"> {{ card['quantity'] }} owned</div>
+                </div>
+            </header>
+        </article>
+    {% if not loop.last %}
+        <hr>
+    {% endif %}
+    {% endfor %}
+{% endblock %}
