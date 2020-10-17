@@ -1,20 +1,50 @@
 <!DOCTYPE html>
-<title>{% block title %}{% endblock %} - netDeckr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-    <h1>netDeckr</h1>
-    <ul>
-        <li><a href="{{ url_for('catalog.add') }}">Add Cards </a>
-        <li><a href="{{ url_for('catalog.search') }}">Search </a>
-        <!-- TODO: add links to uploading lists of cards and looking up decklists -->
-    </ul>
-</nav>
-<section class="content">
-    <header>
-        {% block header %} {% endblock %}
-    </header>
-    {% for message in get_flashed_messages() %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-    {% block content %}{% endblock %}
-</section>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}netDeckr</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+        <nav>
+            <h1>netDeckr</h1>
+            <span class = "dropdown-bar">
+            <div class="dropdown">
+                <span>Catalog</span>
+                <div class="dropdown-content">
+                    <p><a href={{ url_for('catalog.index') }}> Catalog </a></p>
+                    <p><a href="#">Mass Entry</a></p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span>Deck</span>
+                <div class="dropdown-content">
+                    <p><a href="#">Deck Check</a></p>
+                    <p><a href="#">Saved Decks</a></p>
+                    <p><a href="#">Import Decks</a></p>
+                </div>
+            </div>
+            </span>
+            {% block search %}{% endblock %}
+        </nav>
+
+        <!-- main content -->
+        <main>
+            <section class="content">
+                <header>
+                    {% block header %} {% endblock %}
+                </header>
+                {% for message in get_flashed_messages() %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+                {% block content %}{% endblock %}
+            </section>
+
+            <aside>
+                {% block aside %} {% endblock %}
+            </aside>
+
+        </main>
+    </body>
+</html>

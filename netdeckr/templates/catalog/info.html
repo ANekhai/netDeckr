@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h2>{{ card['name'] }}</h2>
+{% endblock %}
+
+{% block content %}
+<span class="info-image"><img src="{{ card['image'] }}"></span>
+<article class="info">
+    <span class="quantity">{{ card['quantity']}} owned</span>
+    <!-- TODO: add links to TCGPlayer and Card Kingdom pricing -->
+</article>
+<form method="post" action="{{ url_for('catalog.remove', id=card['id']) }}">
+	<label for="quantity"> Quantity </label>
+	<input type="number" name ="quantity" id="remove-quantity" value="{{ request.form['quantity'] or 1}}" min="1" required>
+	<input type="submit" value="Remove">
+</form>
+{% endblock %}
+
+{% block aside %}
+{% endblock %}
+<!-- TODO: add list of decks that use this card in the aside once decks implemented -->

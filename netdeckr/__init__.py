@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, url_for
 
 
 def create_app(test_config=None):
@@ -17,6 +17,9 @@ def create_app(test_config=None):
     else:
         # load passed in test config
         app.config.from_mapping(test_config)
+
+    # define paths to static directories
+    app.config['JS'] = os.path.join(app.static_folder, "javascript")
 
     # look for instance folder
     try:

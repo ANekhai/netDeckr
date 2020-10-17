@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block search %}
+<form class="search" method="post" action="{{ url_for('catalog.search') }}">
+    <input type="text" name="query" id="card-query" value="{{ request.form['query'] }}" required>
+    <input type="submit" value="Search">
+</form>
+{% endblock %}
+
+{% block header %}
+    <h2>Database</h2>
+    <a href=" {{ url_for('catalog.download') }} " download="card-catalog.txt"><button class="download">Download</button></a>
+{% endblock %}
+
+{% block content %}
+    <form class="add-card" method="post" action="{{ url_for('catalog.add') }}">
+        <label for="name">Card Name</label>
+        <input type="text" name="name" id="add-name" value="{{ request.form['name'] }}" required>
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="add-quantity" value="{{ request.form['quantity'] or 1}}" min="1">
+        <input type="submit" value="Add">
+    </form>
+    <!-- Since database doesn't delete cards with quantity zero, we must skip listing these entries --> 
+    {% for card in cards %}
+    {% if card['quantity'] > 0 %}
+        <article class="entry">
+            <header>
+                <div class="card-entry">
+                    <span class="card-title">
+                        <h3><a class="info" href="{{ url_for('catalog.info', id=card['id']) }}">{{ card['name'] }}</a></h3>
+                        <img class="card-image" src="{{ card['image'] }}" width="265" height="370">
+                    </span>
+                    <span class="quantity">{{ card['quantity'] }} owned</span>
+                </div>
+            </header>
+        </article>
+        {% if not loop.last %}
+            <hr>
+        {% endif %}
+    {% endif %}
+    {% endfor %}
+{% endblock %}
