@@ -7,18 +7,21 @@
     </head>
 
     <body>
+        <header> 
+            <h1> netDeckr </h1> 
+        </header>
+
         <nav>
-            <h1>netDeckr</h1>
             <span class = "dropdown-bar">
             <div class="dropdown">
-                <span>Catalog</span>
+                <span>Cards</span>
                 <div class="dropdown-content">
                     <p><a href={{ url_for('catalog.index') }}> Catalog </a></p>
                     <p><a href="#">Mass Entry</a></p>
                 </div>
             </div>
             <div class="dropdown">
-                <span>Deck</span>
+                <span>Decks</span>
                 <div class="dropdown-content">
                     <p><a href="#">Deck Check</a></p>
                     <p><a href="#">Saved Decks</a></p>

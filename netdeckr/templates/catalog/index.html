@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block header %}
-    <h2>Database</h2>
+    <h2>Catalog</h2>
     <a href=" {{ url_for('catalog.download') }} " download="card-catalog.txt"><button class="download">Download</button></a>
 {% endblock %}
 
@@ -24,15 +24,11 @@
     {% for card in cards %}
     {% if card['quantity'] > 0 %}
         <article class="entry">
-            <header>
-                <div class="card-entry">
-                    <span class="card-title">
-                        <h3><a class="info" href="{{ url_for('catalog.info', id=card['id']) }}">{{ card['name'] }}</a></h3>
-                        <img class="card-image" src="{{ card['image'] }}" width="265" height="370">
-                    </span>
-                    <span class="quantity">{{ card['quantity'] }} owned</span>
-                </div>
-            </header>
+            <span class="card-title">
+                <h3><a class="info-link" href="{{ url_for('catalog.info', id=card['id']) }}">{{ card['name'] }}</a></h3>
+                <img class="card-image" src="{{ card['image'] }}" width="265" height="370">
+            </span>
+            <span class="quantity">{{ card['quantity'] }} owned</span>
         </article>
         {% if not loop.last %}
             <hr>
