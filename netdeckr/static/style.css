@@ -1,30 +1,44 @@
-/* General text styling */
+/* || General text styling */
 /* --------------------------------------------------------- */
 
-body {
-	font: 1em/150% Helvetica, Arial, sans-serif;
-	padding 1em;
-	margin: 0 auto;
-	max-width: 50em;
+html {
+	font-size: 10px;
+	background: #16161d; /* Eigengrau */
 }
+
+body {
+	font: 1.6rem/150% Helvetica, Arial, sans-serif;
+	padding 1.6rem;
+	margin: 0 auto;
+	max-width: 80rem;
+}
+
+p {
+
+}
+
+ul {  }
 
 h1 {
 	color: gray;
-	font-size:1.5em;
+	text-shadow: 2px 2px 2px gray;
+	font-size:3.2rem;
 	text-align: center;
 }
 
 h2 {
 	display: inline-block;
+	color: lightgray;
 }
 
 h3 {
-	font-size:1em;
+	font-size:1.6rem;
 }
 
 a {
 	text-decoration: none;
 	font-weight: bold;
+	padding: .5rem;
 }
 
 /* Form reset */
@@ -33,33 +47,47 @@ select, textarea {
 	font-family: inherit;
 	font-size: 100%;
 	box-sizing: border-box;
-	padding: 0; margin: 0;
+	padding: 0; margin: 4px;
+}
+
+label {
+	font-weight: bold;
+	color: lightgray;
 }
 
 textarea {
 	overflow: auto;
 }
 
-/* Navigation Bar */
+/* || UTILITIES */
+/* --------------------------------------------------------- */
+
+
+/* || Navigation Bar */
 /* --------------------------------------------------------- */
 nav {
+	display: flex;
+	align-items: center;
 	position: sticky;
+	align-self: flex-start;
 }
 
 .dropdown {
 	position: relative;
 	display: inline-block;
-	padding: .4em;
+	padding: .65rem;
 	background-color: lightseagreen;
-	border: 2px solid black;
-	border-radius: .5em;
+	border: 2px solid gray;
+	border-radius: .5rem;
 }
 
 .dropdown-content {
 	display: none;
 	position: absolute;
+	margin-top: .7rem;
+	margin-left: -.9rem;
 	background-color: lightcoral;
-	min-width: 100px;
+	min-width: 150px;
 	box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
 	padding: 12px 12px;
 	z-index: 1;
@@ -74,44 +102,48 @@ nav {
 }
 
 .search {
-	position: relative;
-	display: inline-block;
+	margin: 2px;
+	margin-left: auto;
 }
 
-
-/* Index page buttons */
-/* --------------------------------------------------------- */
-
-/* Form styling */
+/* || Form styling */
 /* --------------------------------------------------------- */
 input[type="text"], input[type="number"] {
 	border: 2px solid black;
 	border-radius: 3px;
 	padding: 6px;
+	background: lightgray;
 }
 
 input[type="number"] {
-	max-width: 4em;
+	max-width: 6.4rem;
 }
 
 input[type="submit"], button {
 	color: white;
 	border: 2px solid black;
-	border-radius: .5em;
+	border-radius: .8rem;
 	background-color: gray;
-	padding: .4em;
+	padding: .65rem;
 }
 
 input[type="submit"]:hover, button:hover {
-	background-color: black;
+	background-color: darkgray;
 }
+
+/* || Box for card addition bar */
 
 .add-card {
-	margin: 1em;
+	display: flex;
+	align-items: center;
+	margin: .4rem;
+	justify-content: center;
 
 }
 
-/* Catalog entries */
+
+
+/* || Catalog entries */
 /* --------------------------------------------------------- */
 
 /* Image on hover */
@@ -132,15 +164,7 @@ input[type="submit"]:hover, button:hover {
 }
 
 .card-title:hover .card-image {
-	display: block;
-}
-
-.info {
-	text-decoration: underline;
-}
-
-.info:visited {
-	color: blue;
+	display: inline-block;
 }
 
 /* Entry zebra styling*/
@@ -153,9 +177,32 @@ input[type="submit"]:hover, button:hover {
 	background: gray;
 }
 
-article {
-
+.entry {
+	display: flex;
+	align-items: center;
 }
 
-/* Info page styling */
+.entry .quantity {
+	margin-right: 2rem;
+	margin-left: auto;
+}
+
+.quantity {
+	color: rebeccapurple;
+}
+
+.info-link {
+	text-decoration: underline;
+}
+
+.info-link:hover {
+	background: lightblue;
+}
+
+.info-link:visited {
+	color: blue;
+}
+
+
+/* || Info page styling */
 /* --------------------------------------------------------- */
