@@ -23,7 +23,7 @@
     <!-- Since database doesn't delete cards with quantity zero, we must skip listing these entries --> 
     {% for card in cards %}
     {% if card['quantity'] > 0 %}
-        <article class="entry">
+        <article class="entry {{ card['color'] }}">
             <span class="card-title">
                 <h3><a class="info-link" href="{{ url_for('catalog.info', id=card['id']) }}">{{ card['name'] }}</a></h3>
                 <img class="card-image" src="{{ card['image'] }}" width="265" height="370">
