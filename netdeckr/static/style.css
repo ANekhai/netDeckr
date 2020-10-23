@@ -63,6 +63,14 @@ textarea {
 /* --------------------------------------------------------- */
 
 
+/* || Errors */
+/* --------------------------------------------------------- */
+.flash {
+	font: bold;
+	color: red;
+}
+
+
 /* || Navigation Bar */
 /* --------------------------------------------------------- */
 nav {
@@ -169,13 +177,13 @@ input[type="submit"]:hover, button:hover {
 
 /* Entry zebra styling*/
 
-.entry:nth-child(4n-3) {
+/*.entry:nth-child(4n-3) {
 	background: lightgray;
 }
 
 .entry:nth-child(4n-1) {
 	background: gray;
-}
+}*/
 
 .entry {
 	display: flex;
@@ -206,3 +214,10 @@ input[type="submit"]:hover, button:hover {
 
 /* || Info page styling */
 /* --------------------------------------------------------- */
+/* Setting image sizes */
+
+.info-image img {
+	max-width: 33%;
+	margin: .4rem;
+}
+

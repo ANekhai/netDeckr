@@ -2,15 +2,14 @@ import functools
 from os import path
 
 from flask import (
-    Blueprint, current_app, flash, g, redirect, render_template, request, Response, send_from_directory, url_for
+    Blueprint, flash, redirect, render_template, request, Response, url_for
 )
 from werkzeug.exceptions import abort
-
-from mtgsdk import Card
 
 from netdeckr.db import get_db
 
 from .utils import format_text, db_to_str
+from . import api
 
 bp = Blueprint('catalog', __name__)
 
@@ -35,7 +34,8 @@ def add():
     db_card = db.execute(
         'SELECT name, quantity FROM card WHERE name = ?', (card_name,)
         ).fetchone()
-    image_url = None
+    card_info = api.get_card(card_name)
+
     error = None
 
     if not card_name:
@@ -45,15 +45,8 @@ def add():
     elif quantity < 1:
         error = 'Can only add a positive number of cards.'
     # Check if card is contained in the mtg card database using mtgsdk
-    elif not db_card and not Card.where(name='"{}"'.format(card_name)).all():
+    elif not card_info:
         error = 'Could not find card named {}' .format(card_name)
-
-    if not db_card and not error:
-        # Get URL for image of card to store in database
-        # Must collect all image_urls, as not every card entry fetched will have an image_url
-        urls = [c.image_url for c in Card.where(name='"{}"' .format(card_name)).all()
-                if c.image_url]
-        image_url = urls[-1]
 
     if error is not None:
         flash(error)
@@ -69,11 +62,20 @@ def add():
     # create a new entry in database for this card
     else:
         db = get_db()
+        data = api.extract_data(card_info)
         db.execute(
-            'INSERT INTO card (name, quantity, image)'
-            ' VALUES (?, ?, ?)',
-            (card_name, quantity, image_url)
+            'INSERT INTO card (name, quantity, image, price, color)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (card_name, quantity, data['front'], data['price'], data['color'])
         )
+
+        if 'back' in data:
+            db.execute(
+                'UPDATE card'
+                ' SET back_image = ?'
+                ' WHERE name = ?', (data['back'], card_name)
+            )
+
         db.commit()
 
     return redirect(url_for('catalog.index'))

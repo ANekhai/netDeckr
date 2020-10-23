@@ -1,0 +1,119 @@
+/* Color definitions */
+:root {
+	--black: rgb(166, 159, 157);
+	--green: rgb(196, 211, 202);
+	--red: rgb(235, 159, 130);
+	--blue: rgb(179, 206, 234);
+	--white: rgb(248, 231, 185);
+	--artifact: rgb(137, 117, 103);
+	--multicolored: rgb(219, 191, 94);
+	--colorless: rgb(193, 203, 207);
+}
+
+
+/* || Color rules for catalog articles */
+
+.entry {background: var(--colorless);}
+
+.artifact { background: var(--artifact); }
+
+
+/* || Mono colored backgrounds */
+.B { background: var(--black); }
+
+.G { background: var(--green); }
+
+.R { background: var(--red); }
+
+.U { background: var(--blue); }
+
+.W { background: var(--white); }
+
+/* || Two colored backgrounds */
+.BG { /* Golgari */
+	background: linear-gradient(175deg, var(--black) 20%, var(--green) 80%); 
+}
+
+.BR { /* Rakdos */
+	background: linear-gradient(175deg, var(--black) 20%, var(--red) 80%); 
+}
+
+.BU { /* Dimir */
+	background: linear-gradient(175deg, var(--black) 20%, var(--blue) 80%); 
+}
+
+.BW { /* Orzhov */
+	background: linear-gradient(175deg, var(--black) 20%, var(--white) 80%); 
+}
+
+.GR { /* Gruul */
+	background: linear-gradient(175deg, var(--green) 20%, var(--red) 80%); 
+}
+
+.GU { /* Simic */
+	background: linear-gradient(175deg, var(--green) 20%, var(--blue) 80%); 
+}
+
+.GW { /* Selesnya */
+	background: linear-gradient(175deg, var(--green) 20%, var(--white) 80%); 
+}
+
+.RU { /* Izzet */
+	background: linear-gradient(175deg, var(--red) 20%, var(--blue) 80%); 
+}
+
+.RW { /* Boros */
+	background: linear-gradient(175deg, var(--red) 20%, var(--white) 80%);
+}
+
+.UW { /* Azorius */
+	background: linear-gradient(175deg, var(--blue) 20%, var(--white) 80%);
+}
+
+
+/* || Three colored backgrounds */ 
+.BGR { /* Jund */
+	background: linear-gradient(145deg, var(--black) 20%, var(--red) 50%, var(--green) 80%);
+}
+
+.BGU { /* Sultai */
+	background: linear-gradient(145deg, var(--green) 20%, var(--black) 50%, var(--blue) 80%);
+}
+
+.BGW { /* Abzan */
+	background: linear-gradient(145deg, var(--black) 20%, var(--white) 50%, var(--green) 80%);
+}
+
+.BRU { /* Grixis */
+	background: linear-gradient(145deg, var(--blue) 20%, var(--black) 50%, var(--red) 80%);
+}
+
+.BRW { /* Mardu */
+	background: linear-gradient(145deg, var(--white) 20%, var(--red) 50%, var(--black) 80%);
+}
+
+.BUW { /* Esper */
+	background: linear-gradient(145deg, var(--white) 20%, var(--blue) 50%, var(--black) 80%);
+}
+
+.GRU { /* Temur */
+	background: linear-gradient(145deg, var(--blue) 20%, var(--green) 50%, var(--red) 80%);
+}
+
+.GRW { /* Naya */
+	background: linear-gradient(145deg, var(--red) 20%, var(--green) 50%, var(--white) 80%);
+}
+
+.GUW { /* Bant */
+	background: linear-gradient(145deg, var(--green) 20%, var(--white) 50%, var(--blue) 80%);
+}
+
+.RUW { /* Jeskai */
+	background: linear-gradient(145deg, var(--red) 20%, var(--blue) 50%, var(--white) 80%);
+}
+
+/* || Four and Five colored backgrounds */
+
+.GRUW, .BRUW, .BGUW, .BGRW, .BGRU, .BGRUW {
+	background: var(--multicolored);
+}
